@@ -25,11 +25,19 @@ namespace Lykke.Service.Messages.Repositories
         public async Task<List<ITemplateModel>> GetAllAsync()
         {
             var result = new List<ITemplateModel>();
-            var keys = await _storage.GetListOfBlobKeysAsync(_container);
-            foreach (var k in keys)
+            try
             {
-                result.Add(await GetByIdAsync(k));
+                var keys = await _storage.GetListOfBlobKeysAsync(_container);
+                foreach (var k in keys)
+                {
+                    result.Add(await GetByIdAsync(k));
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
          
           
             return result;
@@ -55,8 +63,21 @@ namespace Lykke.Service.Messages.Repositories
         public async Task Write(ITemplateModel template)
         {
             var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(template));
-            var key = template.TemplateId ?? Guid.NewGuid();
-            await _storage.SaveBlobAsync(_container, key.ToString(), data);
+            template.TemplateId = template.TemplateId ?? Guid.NewGuid();
+            await _storage.SaveBlobAsync(_container, template.TemplateId.Value.ToString(), data);
+        }
+
+        public async Task<bool> Remove(Guid existTemplateTemplateId)
+        {
+            try
+            {
+                await _storage.DelBlobAsync(_container, existTemplateTemplateId.ToString());
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

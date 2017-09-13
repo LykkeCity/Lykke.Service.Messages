@@ -22,16 +22,26 @@ namespace Lykke.Service.Messages.Services
             _log = log;
         }
 
-
         public async Task<bool> SaveTemplate(ITemplateModel template)
         {
             try
             {
+                var templates = await GetTemplatesByMerchantId(template.MerchantId);
+                var existTemplate = templates.FirstOrDefault(t => t.TemplateType.Equals(template.TemplateType));
+                var canBeSaved = true;
+                if (existTemplate?.TemplateId != null)
+                {
+                    canBeSaved = await _templateMessageServiceRepository.Remove(existTemplate.TemplateId.Value);
+                }
+                if (!canBeSaved)
+                {
+                    throw new ApplicationException("Can't delete existing template");
+                }
                 await _templateMessageServiceRepository.Write(template);
             }
             catch (Exception e)
             {
-                await _log.WriteErrorAsync("Templete MEssage", "Saving a template",
+                await _log.WriteErrorAsync("Templete Message", "Saving a template",
                     template == null ? string.Empty : JsonConvert.SerializeObject(template), e);
                 return false;
             }

@@ -9,5 +9,6 @@ namespace Lykke.Service.Messages.Core.Domain
         Task<List<ITemplateModel>> GetAllAsync();
         Task<ITemplateModel> GetByIdAsync(Guid templateId);
         Task Write(ITemplateModel template);
+        Task<bool> Remove(Guid existTemplateTemplateId);
     }
 }

@@ -33,7 +33,7 @@ namespace Lykke.Service.Messages.Controllers
 
             if (await _templateMessagesService.SaveTemplate(template))
             {
-                return Json(new TemplateResponseModel {TemplatePostRequestStatus = TemplatePostRequestStatus.Ok});
+                return Json(new TemplateResponseModel {TemplatePostRequestStatus = TemplatePostRequestStatus.Ok, MessagePostId = template.TemplateId.Value});
             }
 
             return Json(new TemplateResponseModel { TemplatePostRequestStatus = TemplatePostRequestStatus.Error });
