@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Instrastructure", "1. Instrastructure", "{CC2067D7-1971-47BB-B491-5649EA3C18B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{6CA74DE0-A357-4934-9D8B-FEA3F0A2D690}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Client", "3. Client", "{C9A2CFDE-EA32-4946-B679-7CE6EFA816B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Tests", "4. Tests", "{8F9036B1-5106-4C69-B2D2-B78EE52687A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Job.Messages.Core", "src\Lykke.Job.Messages.Core\Lykke.Job.Messages.Core.csproj", "{DE4CCCD6-95BD-485B-A32F-8BD41D50B1E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Job.Messages.Services", "src\Lykke.Job.Messages.Services\Lykke.Job.Messages.Services.csproj", "{67516153-A54A-40BD-BCB1-DD408CE98B20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Service.Messages.Core", "src\Lykke.Service.Messages.Core\Lykke.Service.Messages.Core.csproj", "{5FA0367D-74FA-4877-A5A2-FFBE5A154711}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Service.Messages.Services", "src\Lykke.Service.Messages.Services\Lykke.Service.Messages.Services.csproj", "{AFB08AE0-3D36-4802-8B85-967FBC6DF7AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Service.Messages.Client", "client\Lykke.Service.Messages.Client\Lykke.Service.Messages.Client.csproj", "{C1C758D5-458E-4E2A-9884-21BB559DD489}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Job.Messages", "src\Lykke.Job.Messages\Lykke.Job.Messages.csproj", "{19D6A04F-D33C-413C-894E-1FFD7CB126AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Service.Messages", "src\Lykke.Service.Messages\Lykke.Service.Messages.csproj", "{6E9C72AA-69FC-4ED4-B174-3318690CA3E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Service.Messages.Tests", "tests\Lykke.Service.Messages.Tests\Lykke.Service.Messages.Tests.csproj", "{8BD7CC4A-809B-44F7-8D63-30A39CE4F74F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Repository", "2. Repository", "{42771768-FE9A-4EBB-89AC-5EAAA21A0744}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Service.Messages.Repositories", "src\Lykke.Service.Messages.Repository\Lykke.Service.Messages.Repositories.csproj", "{A0DF2C43-13D7-4E82-8641-10315358EED8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE4CCCD6-95BD-485B-A32F-8BD41D50B1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4CCCD6-95BD-485B-A32F-8BD41D50B1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4CCCD6-95BD-485B-A32F-8BD41D50B1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4CCCD6-95BD-485B-A32F-8BD41D50B1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67516153-A54A-40BD-BCB1-DD408CE98B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67516153-A54A-40BD-BCB1-DD408CE98B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67516153-A54A-40BD-BCB1-DD408CE98B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67516153-A54A-40BD-BCB1-DD408CE98B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA0367D-74FA-4877-A5A2-FFBE5A154711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA0367D-74FA-4877-A5A2-FFBE5A154711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA0367D-74FA-4877-A5A2-FFBE5A154711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA0367D-74FA-4877-A5A2-FFBE5A154711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB08AE0-3D36-4802-8B85-967FBC6DF7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB08AE0-3D36-4802-8B85-967FBC6DF7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB08AE0-3D36-4802-8B85-967FBC6DF7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB08AE0-3D36-4802-8B85-967FBC6DF7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C758D5-458E-4E2A-9884-21BB559DD489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C758D5-458E-4E2A-9884-21BB559DD489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C758D5-458E-4E2A-9884-21BB559DD489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C758D5-458E-4E2A-9884-21BB559DD489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D6A04F-D33C-413C-894E-1FFD7CB126AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D6A04F-D33C-413C-894E-1FFD7CB126AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D6A04F-D33C-413C-894E-1FFD7CB126AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D6A04F-D33C-413C-894E-1FFD7CB126AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E9C72AA-69FC-4ED4-B174-3318690CA3E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9C72AA-69FC-4ED4-B174-3318690CA3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9C72AA-69FC-4ED4-B174-3318690CA3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9C72AA-69FC-4ED4-B174-3318690CA3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BD7CC4A-809B-44F7-8D63-30A39CE4F74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BD7CC4A-809B-44F7-8D63-30A39CE4F74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BD7CC4A-809B-44F7-8D63-30A39CE4F74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BD7CC4A-809B-44F7-8D63-30A39CE4F74F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0DF2C43-13D7-4E82-8641-10315358EED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0DF2C43-13D7-4E82-8641-10315358EED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0DF2C43-13D7-4E82-8641-10315358EED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0DF2C43-13D7-4E82-8641-10315358EED8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE4CCCD6-95BD-485B-A32F-8BD41D50B1E9} = {CC2067D7-1971-47BB-B491-5649EA3C18B2}
+		{67516153-A54A-40BD-BCB1-DD408CE98B20} = {CC2067D7-1971-47BB-B491-5649EA3C18B2}
+		{5FA0367D-74FA-4877-A5A2-FFBE5A154711} = {CC2067D7-1971-47BB-B491-5649EA3C18B2}
+		{AFB08AE0-3D36-4802-8B85-967FBC6DF7AE} = {CC2067D7-1971-47BB-B491-5649EA3C18B2}
+		{C1C758D5-458E-4E2A-9884-21BB559DD489} = {C9A2CFDE-EA32-4946-B679-7CE6EFA816B8}
+		{8BD7CC4A-809B-44F7-8D63-30A39CE4F74F} = {8F9036B1-5106-4C69-B2D2-B78EE52687A0}
+		{A0DF2C43-13D7-4E82-8641-10315358EED8} = {42771768-FE9A-4EBB-89AC-5EAAA21A0744}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {727BD6A3-64C1-409A-AEFE-41343560F7BA}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lykke.AzureStorage" Version="1.2.41" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lykke.Service.Messages.Core\Lykke.Service.Messages.Core.csproj" />
+    <ProjectReference Include="..\Lykke.Service.Messages.Services\Lykke.Service.Messages.Services.csproj" />
+  </ItemGroup>
+
+</Project>
