@@ -2,12 +2,8 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace Lykke.Service.Messages.Client.AutorestClient.Models
+namespace swagger.Models
 {
-    using Lykke.Service;
-    using Lykke.Service.SMS;
-    using Lykke.Service.SMS.Client;
-    using Lykke.Service.SMS.Client.AutorestClient;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -26,7 +22,7 @@ namespace Lykke.Service.Messages.Client.AutorestClient.Models
         /// <summary>
         /// Initializes a new instance of the IsAliveResponse class.
         /// </summary>
-        public IsAliveResponse(string version = default(string), string env = default(string), bool? isDebug = default(bool?), IList<IssueIndicator> issueIndicators = default(IList<IssueIndicator>))
+        public IsAliveResponse(bool isDebug, string version = default(string), string env = default(string), IList<IssueIndicator> issueIndicators = default(IList<IssueIndicator>))
         {
             Version = version;
             Env = env;
@@ -53,12 +49,21 @@ namespace Lykke.Service.Messages.Client.AutorestClient.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsDebug")]
-        public bool? IsDebug { get; set; }
+        public bool IsDebug { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IssueIndicators")]
         public IList<IssueIndicator> IssueIndicators { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\client\Lykke.Service.SMS.Client\Lykke.Service.SMS.Client.csproj" />
+    <ProjectReference Include="..\..\client\Lykke.Service.Messages.Client\Lykke.Service.Messages.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>

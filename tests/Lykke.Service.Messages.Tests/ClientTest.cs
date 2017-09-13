@@ -1,6 +1,4 @@
-﻿using Lykke.Job.SMS.Core.Domain;
-using Lykke.Service.SMS.Client;
-using Lykke.Service.SMS.Client.AutorestClient.Models;
+﻿using Lykke.Service.Messages.Client;
 using Xunit;
 
 namespace Lykke.Service.Messages.Tests
@@ -10,9 +8,9 @@ namespace Lykke.Service.Messages.Tests
         [Fact]
         public void Test1()
         {
-            var client = new SMSClient("http://13.93.41.3:1070", null);
-            var result = client.SendSms(new SmsRequestModel {Message = "Test message", PhoneNumber = "+79312600505"}).Result;
-            Assert.Equal(SmsPostRequestStatus.Ok, result.SmsPostRequestStatus);
+            var client = new TemplateMessagesClient("http://52.233.198.75:2340", null);
+            var result = client.GetTemplates().Result;
+            Assert.NotEmpty(result);;
         }
     }
 

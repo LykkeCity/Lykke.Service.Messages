@@ -2,12 +2,8 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace Lykke.Service.Messages.Client.AutorestClient.Models
+namespace swagger.Models
 {
-    using Lykke.Service;
-    using Lykke.Service.SMS;
-    using Lykke.Service.SMS.Client;
-    using Lykke.Service.SMS.Client.AutorestClient;
     using Newtonsoft.Json;
     using System.Linq;
 

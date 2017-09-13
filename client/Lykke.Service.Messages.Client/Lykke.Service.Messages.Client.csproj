@@ -5,12 +5,12 @@
     <Version>1.0.1</Version>
     <Authors>Lykke</Authors>
     <Company>Lykke</Company>
-    <Product>Lykke.Service.SMS</Product>
-    <Description>Client for Lykke.Service.SMS API</Description>
-    <PackageLicenseUrl>https://github.com/LykkeCity/Lykke.Service.SMS/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/LykkeCity/Lykke.Service.SMS</PackageProjectUrl>
+    <Product>Lykke.Service.Messages</Product>
+    <Description>Client for Lykke.Service.Messages API</Description>
+    <PackageLicenseUrl>https://github.com/LykkeCity/Lykke.ServiceMessages/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/LykkeCity/Lykke.Service.Messages</PackageProjectUrl>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/14153330?v=3&amp;s=200</PackageIconUrl>
-    <RepositoryUrl>https://github.com/LykkeCity/Lykke.Service.SMS.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LykkeCity/Lykke.Service.Messages.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Lykke</PackageTags>
   </PropertyGroup>
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
-    <PackageReference Include="Lykke.Common" Version="1.1.95" />
+    <PackageReference Include="Lykke.Common" Version="1.1.97" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
   </ItemGroup>
 
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Lykke.Service.SMS.Services\Lykke.Service.SMS.Services.csproj" />
+    <ProjectReference Include="..\..\src\Lykke.Service.Messages.Services\Lykke.Service.Messages.Services.csproj" />
   </ItemGroup>
 
 </Project>

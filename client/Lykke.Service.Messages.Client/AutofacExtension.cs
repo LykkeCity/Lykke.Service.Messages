@@ -6,7 +6,7 @@ namespace Lykke.Service.Messages.Client
 {
     public static class AutofacExtension
     {
-        public static void RegisterSMSClient(this ContainerBuilder builder, string serviceUrl, ILog log)
+        public static void RegisterTemplateClient(this ContainerBuilder builder, string serviceUrl, ILog log)
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (serviceUrl == null) throw new ArgumentNullException(nameof(serviceUrl));
@@ -14,7 +14,7 @@ namespace Lykke.Service.Messages.Client
             if (string.IsNullOrWhiteSpace(serviceUrl))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(serviceUrl));
 
-            builder.RegisterInstance(new SMSClient(serviceUrl, log)).As<ISMSClient>().SingleInstance();
+            builder.RegisterInstance(new TemplateMessagesClient(serviceUrl, log)).As<ITemplateMessagesClient>().SingleInstance();
         }
     }
 }
