@@ -2,36 +2,21 @@
 {
     public class AppSettings
     {
-        public SMSSettings SMSJob { get; set; }
+        public MessageTemplateJobSettings MessageTemplateJob { get; set; }
         public SlackNotificationsSettings SlackNotifications { get; set; }
 
-        public class SMSSettings
+        public class MessageTemplateJobSettings
         {
             public DbSettings Db { get; set; }
-            public TwilioSettings Twilio { get; set; }
-            public NexmoSettings Nexmo { get; set; }
+            public ServicesUrl Services { get; set; }
         }
 
-        public class TwilioSettings
-        {
-            public string AccountSid { get; set; }
-            public string AuthToken { get; set; }
-            public string SwissSender { get; set; }
-            public string UsSender { get; set; }
-        }
-
-        public class NexmoSettings
-        {
-            public string NexmoAppKey { get; set; }
-            public string NexmoAppSecret { get; set; }
-            public string UsCanadaSender { get; set; }
-            public string DefaultSender { get; set; }
-        }
+       
 
         public class DbSettings
         {
             public string LogsConnString { get; set; }
-            public string SmsConnString { get; set; }
+            public string ClientPersonalInfoConnString { get; set; }
         }
 
         public class SlackNotificationsSettings
@@ -45,5 +30,12 @@
 
             public string QueueName { get; set; }
         }
+
+        public class ServicesUrl
+        {
+            public string MessageServiceUrl { get; set; }
+        }
     }
+
+    
 }

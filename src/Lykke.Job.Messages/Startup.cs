@@ -6,9 +6,9 @@ using AzureStorage.Tables;
 using Common.Log;
 using Lykke.Common.ApiLibrary.Middleware;
 using Lykke.Common.ApiLibrary.Swagger;
+using Lykke.Job.Messages.Modules;
 using Lykke.Job.SMS.Core;
 using Lykke.Job.SMS.Models;
-using Lykke.Job.SMS.Modules;
 using Lykke.JobTriggers.Extenstions;
 using Lykke.JobTriggers.Triggers;
 using Lykke.Logs;
@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Lykke.Job.SMS
+namespace Lykke.Job.Messages
 {
     public class Startup
     {
@@ -55,7 +55,7 @@ namespace Lykke.Job.SMS
 
             services.AddSwaggerGen(options =>
             {
-                options.DefaultLykkeConfiguration("v1", "SMS API");
+                options.DefaultLykkeConfiguration("v1", "TEmplate Message API");
             });
 
             var builder = new ContainerBuilder();
@@ -64,7 +64,7 @@ namespace Lykke.Job.SMS
                 : HttpSettingsLoader.Load<AppSettings>(Configuration.GetValue<string>("SettingsUrl"));
             var log = CreateLogWithSlack(services, appSettings);
 
-            builder.RegisterModule(new JobModule(appSettings.SMSJob, log));
+            builder.RegisterModule(new JobModule(appSettings.MessageTemplateJob, log));
             builder.AddTriggers();
             builder.Populate(services);
 
@@ -130,30 +130,30 @@ namespace Lykke.Job.SMS
                 QueueName = settings.SlackNotifications.AzureQueue.QueueName
             }, aggregateLogger);
 
-            var dbLogConnectionString = settings.SMSJob.Db.LogsConnString;
+            var dbLogConnectionString = settings.MessageTemplateJob.Db.LogsConnString;
 
-            // Creating azure storage logger, which logs own messages to concole log
-            //if (!string.IsNullOrEmpty(dbLogConnectionString) && !(dbLogConnectionString.StartsWith("${") && dbLogConnectionString.EndsWith("}")))
-            //{
-            //    const string appName = "Lykke.Job.SMS";
+            //Creating azure storage logger, which logs own messages to concole log
+            if (!string.IsNullOrEmpty(dbLogConnectionString) && !(dbLogConnectionString.StartsWith("${") && dbLogConnectionString.EndsWith("}")))
+            {
+                const string appName = "Lykke.Job.Messages";
 
-            //    var persistenceManager = new LykkeLogToAzureStoragePersistenceManager(
-            //        appName,
-            //        AzureTableStorage<LogEntity>.Create(() => dbLogConnectionString, "SMSLog", consoleLogger),
-            //        consoleLogger);
+                var persistenceManager = new LykkeLogToAzureStoragePersistenceManager(
+                    appName,
+                    new AzureTableStorage<LogEntity>(dbLogConnectionString, "SMSTemplateMessageLog", consoleLogger),
+                    consoleLogger);
 
-            //    var slackNotificationsManager = new LykkeLogToAzureSlackNotificationsManager(appName, slackService, consoleLogger);
+                var slackNotificationsManager = new LykkeLogToAzureSlackNotificationsManager(appName, slackService, consoleLogger);
 
-            //    var azureStorageLogger = new LykkeLogToAzureStorage(
-            //        appName,
-            //        persistenceManager,
-            //        slackNotificationsManager,
-            //        consoleLogger);
+                var azureStorageLogger = new LykkeLogToAzureStorage(
+                    appName,
+                    persistenceManager,
+                    slackNotificationsManager,
+                    consoleLogger);
 
-            //    azureStorageLogger.Start();
+                azureStorageLogger.Start();
 
-            //    aggregateLogger.AddLog(azureStorageLogger);
-            //}
+                aggregateLogger.AddLog(azureStorageLogger);
+            }
 
             return aggregateLogger;
         }

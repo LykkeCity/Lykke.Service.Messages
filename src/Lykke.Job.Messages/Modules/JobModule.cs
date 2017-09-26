@@ -1,64 +1,67 @@
 ﻿using System;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
+using AzureStorage.Queue;
 using Common.Log;
+using Lykke.Job.Messages.Core.Services;
 using Lykke.Job.Messages.QueueConsumers;
+using Lykke.Job.Messages.Services;
 using Lykke.Job.SMS.Core;
-using Lykke.Job.SMS.Core.Services;
-using Microsoft.Extensions.DependencyInjection;
+using Lykke.Job.SMS.Services;
+using Lykke.Service.SMS.Client;
+using IHealthService = Lykke.Job.SMS.Core.Services.IHealthService;
 
-namespace Lykke.Job.SMS.Modules
+namespace Lykke.Job.Messages.Modules
 {
     public class JobModule : Module
     {
-        private readonly AppSettings.SMSSettings _settings;
+        private readonly AppSettings.MessageTemplateJobSettings _settings;
         private readonly ILog _log;
         // NOTE: you can remove it if you don't need to use IServiceCollection extensions to register service specific dependencies
-        private readonly IServiceCollection _services;
 
-        public JobModule(AppSettings.SMSSettings settings, ILog log)
+        public JobModule(AppSettings.MessageTemplateJobSettings settings, ILog log)
         {
             _settings = settings;
             _log = log;
 
-            _services = new ServiceCollection();
         }
 
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SmsQueueConsumer>().SingleInstance();
-            //builder.RegisterInstance(_settings)
-            //    .SingleInstance();
 
-            //builder.RegisterInstance(_log)
-            //    .As<ILog>()
-            //    .SingleInstance();
-            //builder.RegisterType<HealthService>()
-            //    .As<IHealthService>()
-            //    .SingleInstance()
-            //    .WithParameter(TypedParameter.From(TimeSpan.FromSeconds(30)));
+            
 
-            //// NOTE: Service registrations example:
+            builder.RegisterInstance(_settings)
+                .SingleInstance();
 
-            //builder.RegisterType<SendSmsService>()
-            //    .As<ISendSmsService>();
+            builder.RegisterInstance(_log)
+                .As<ILog>()
+                .SingleInstance();
+            builder.RegisterType<HealthService>()
+                .As<IHealthService>()
+                .SingleInstance()
+                .WithParameter(TypedParameter.From(TimeSpan.FromSeconds(30)));
 
-            //Lykke.Core.Log.ILog log = new CommonLogAdapter(_log);
-            //var smsRepository = new SmsServiceRepository(new AzureRepositories.Azure.Tables.AzureTableStorage<SmsEntity>(_settings.Db.SmsConnString, "SmsServiceRequests", log), log);
-            //builder.RegisterInstance(smsRepository)
-            //    .As<ISmsServiceRepository>()
-            //    .SingleInstance();
+            RegistermSmsServices(builder);
 
-            //builder.RegisterType<NexmoSender>();
-            //builder.RegisterType<TwilioSender>();
+            // NOTE: Service registrations example:
 
+            builder.RegisterType<SmsSender>()
+                .As<ISmsSender>();
 
-            //// NOTE: You can implement your own poison queue notifier. See https://github.com/LykkeCity/JobTriggers/blob/master/readme.md
-            //// builder.Register<PoisionQueueNotifierImplementation>().As<IPoisionQueueNotifier>();
+            var smsClient = new SMSClient(_settings.Services.MessageServiceUrl, _log);
+            builder.RegisterInstance(smsClient).As<ISMSClient>();
 
-            //// TODO: Add your dependencies here
+        }
 
-            //builder.Populate(_services);
+        private void RegistermSmsServices(ContainerBuilder builder)
+        {
+            var smsQueue = new AzureQueueExt(_settings.Db.ClientPersonalInfoConnString, "smsmerchantqueue");
+            var smsQueueReader = new QueueReader(smsQueue, "SmsQueueReader", 3000, _log);
+
+            builder.Register<IQueueReader>(x => smsQueueReader).SingleInstance();
+            builder.RegisterType<MessageTemplateGenerator>().As<ITemplateGenerator>();
+          
         }
     }
 }

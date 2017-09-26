@@ -40,5 +40,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lykke.Job.Messages.Core\Lykke.Job.Messages.Core.csproj" />
+    <ProjectReference Include="..\Lykke.Job.Messages.Services\Lykke.Job.Messages.Services.csproj" />
   </ItemGroup>
 </Project>
