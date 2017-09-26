@@ -9,32 +9,32 @@ namespace Lykke.Job.SMS.TriggerHandlers
     // when you call builder.AddTriggers() in Startup. Further, JobTriggers infrastructure manages handlers execution.
     public class MainHandlers
     {
-        private readonly ISendSmsService _sendSmsService;
+        //private readonly ISendSmsService _sendSmsService;
         private readonly IHealthService _healthService;
 
         // NOTE: The object is instantiated using DI container, so registered dependencies are injects well
-        public MainHandlers(ISendSmsService sendSmsService, IHealthService healthService)
-        {
-            _sendSmsService = sendSmsService;
-            _healthService = healthService;
-        }
+        //public MainHandlers(ISendSmsService sendSmsService, IHealthService healthService)
+        //{
+        //    _sendSmsService = sendSmsService;
+        //    _healthService = healthService;
+        //}
 
-        [TimerTrigger("00:00:01")]
-        public async Task TimeTriggeredHandler()
-        {
-            try
-            {
-                _healthService.TraceSendSmsStarted();
+        //[TimerTrigger("00:00:01")]
+        //public async Task TimeTriggeredHandler()
+        //{
+        //    try
+        //    {
+        //        _healthService.TraceSendSmsStarted();
 
-                await _sendSmsService.ProcessMessageAsync();
+        //        await _sendSmsService.ProcessMessageAsync();
 
-                _healthService.TraceSendSmsCompleted();
-            }
-            catch
-            {
-                _healthService.TraceSendSmsFailed();
-            }
-        }
+        //        _healthService.TraceSendSmsCompleted();
+        //    }
+        //    catch
+        //    {
+        //        _healthService.TraceSendSmsFailed();
+        //    }
+        //}
 
        
     }

@@ -133,27 +133,27 @@ namespace Lykke.Job.SMS
             var dbLogConnectionString = settings.SMSJob.Db.LogsConnString;
 
             // Creating azure storage logger, which logs own messages to concole log
-            if (!string.IsNullOrEmpty(dbLogConnectionString) && !(dbLogConnectionString.StartsWith("${") && dbLogConnectionString.EndsWith("}")))
-            {
-                const string appName = "Lykke.Job.SMS";
+            //if (!string.IsNullOrEmpty(dbLogConnectionString) && !(dbLogConnectionString.StartsWith("${") && dbLogConnectionString.EndsWith("}")))
+            //{
+            //    const string appName = "Lykke.Job.SMS";
 
-                var persistenceManager = new LykkeLogToAzureStoragePersistenceManager(
-                    appName,
-                    AzureTableStorage<LogEntity>.Create(() => dbLogConnectionString, "SMSLog", consoleLogger),
-                    consoleLogger);
+            //    var persistenceManager = new LykkeLogToAzureStoragePersistenceManager(
+            //        appName,
+            //        AzureTableStorage<LogEntity>.Create(() => dbLogConnectionString, "SMSLog", consoleLogger),
+            //        consoleLogger);
 
-                var slackNotificationsManager = new LykkeLogToAzureSlackNotificationsManager(appName, slackService, consoleLogger);
+            //    var slackNotificationsManager = new LykkeLogToAzureSlackNotificationsManager(appName, slackService, consoleLogger);
 
-                var azureStorageLogger = new LykkeLogToAzureStorage(
-                    appName,
-                    persistenceManager,
-                    slackNotificationsManager,
-                    consoleLogger);
+            //    var azureStorageLogger = new LykkeLogToAzureStorage(
+            //        appName,
+            //        persistenceManager,
+            //        slackNotificationsManager,
+            //        consoleLogger);
 
-                azureStorageLogger.Start();
+            //    azureStorageLogger.Start();
 
-                aggregateLogger.AddLog(azureStorageLogger);
-            }
+            //    aggregateLogger.AddLog(azureStorageLogger);
+            //}
 
             return aggregateLogger;
         }
