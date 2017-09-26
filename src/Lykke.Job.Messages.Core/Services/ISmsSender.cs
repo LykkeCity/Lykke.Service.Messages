@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Lykke.Job.SMS.Core.Domain;
+﻿using System.Threading.Tasks;
 
-namespace Lykke.Job.SMS.Core.Services
+namespace Lykke.Job.Messages.Core.Services
 {
     public interface ISmsSender
     {
-        string GetSenderNumber(string recipientNumber);
-        Task<SmsSenderResponse> ProcessSmsAsync(string phoneNumber, SmsMessage message);
+        Task SendSms(string phoneNumber, string message);
     }
 }

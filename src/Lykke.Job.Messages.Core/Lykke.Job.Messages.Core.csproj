@@ -6,8 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lykke.Common" Version="1.1.95" />
-    <PackageReference Include="Lykke.Core" Version="1.0.81" />
+    <ProjectReference Include="..\Lykke.Service.Messages.Core\Lykke.Service.Messages.Core.csproj" />
   </ItemGroup>
 
 </Project>

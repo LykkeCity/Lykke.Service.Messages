@@ -1,4 +1,4 @@
-﻿namespace Lykke.Job.SMS.Core.Domain.Health
+﻿namespace Lykke.Job.Messages.Core.Domain.Health
 {
     public class HealthIssue
     {

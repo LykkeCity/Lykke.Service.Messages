@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Lykke.Job.SMS.Core.Domain.Health;
+using Lykke.Job.Messages.Core.Domain.Health;
 
 namespace Lykke.Job.SMS.Core.Services
 {

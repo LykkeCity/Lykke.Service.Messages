@@ -6,13 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lykke.AzureRepositories" Version="1.0.81" />
-    <PackageReference Include="Lykke.Common" Version="1.1.95" />
-    <PackageReference Include="Lykke.Core" Version="1.0.81" />
+    <PackageReference Include="Lykke.Service.SMS.Client" Version="1.0.4" />
+    <PackageReference Include="RazorLight2" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lykke.Job.SMS.Core\Lykke.Job.SMS.Core.csproj" />
+    <ProjectReference Include="..\Lykke.Job.Messages.Core\Lykke.Job.Messages.Core.csproj" />
   </ItemGroup>
 
 </Project>

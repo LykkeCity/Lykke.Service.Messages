@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Lykke.Job.SMS.Core.Domain.Health;
+using Lykke.Job.Messages.Core.Domain.Health;
 using Lykke.Job.SMS.Core.Services;
 
 namespace Lykke.Job.SMS.Services
@@ -30,7 +30,7 @@ namespace Lykke.Job.SMS.Services
             return null;
         }
 
-        public IEnumerable<HealthIssue> GetHealthIssues()
+        IEnumerable<HealthIssue> IHealthService.GetHealthIssues()
         {
             var issues = new HealthIssuesCollection();
 
@@ -77,5 +77,7 @@ namespace Lykke.Job.SMS.Services
             WasLastSendSmsCompleted = false;
             WasLastSendSmsFailed = true;
         }
+
+        
     }
 }
